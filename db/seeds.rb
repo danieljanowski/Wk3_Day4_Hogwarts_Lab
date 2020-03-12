@@ -1,6 +1,30 @@
 require_relative('../models/student.rb')
+require_relative('../models/house.rb')
+
 
 Student.delete_all
+House.delete_all
+house1 = House.new({
+  'name' => "Gryffindor",
+  'logo' => "https://vignette.wikia.nocookie.net/harrypotter/images/e/ee/Gryffindor_Crest-0.jpg/revision/latest/scale-to-width-down/182?cb=20160729145529"
+  })
+house2 = House.new({
+  'name' => "Hufflepuff",
+  'logo' => "https://vignette.wikia.nocookie.net/harrypotter/images/6/62/Download_%289%29.jpg/revision/latest?cb=20160729145653"
+  })
+house3 = House.new({
+  'name' => "Ravenclaw",
+  'logo' => "https://vignette.wikia.nocookie.net/harrypotter/images/2/28/Download_%284%29.jpg/revision/latest?cb=20160729145945"
+  })
+house4 = House.new({
+  'name' => "Slytherin",
+  'logo' => "https://vignette.wikia.nocookie.net/harrypotter/images/7/72/Ccd53034-c798-452a-8032-f28e06250d8f.jpg/revision/latest/scale-to-width-down/160?cb=20160729150848"
+  })
+
+house1.save
+house2.save
+house3.save
+house4.save
 
 student1 = Student.new({
   'first_name' => 'Michael',
@@ -26,4 +50,6 @@ student3 = Student.new({
   })
 student3.save
 
-p Student.find_by_id(student3.id)
+
+
+p(House.all)
