@@ -1,3 +1,9 @@
+<h1>Hogwarts</h1>
+
 <% @students.each do |student|%>
-<p> <%= student['id'] %>: <%= student['first_name'] %> <%= student['last_name'] %> is in  <%= student['name'] %> House. Age: <%= student['age'] %></p><hr />
+<p> <img src="<%= student['logo'] %>" alt=""> <%= student['id'] %>: <%= student['first_name'] %> <%= student['last_name'] %> is in  <%= student['name'] %> House. Age: <%= student['age'] %></p><hr />
   <% end %>
+
+<form action="/new" method="post">
+    <input type="submit" value="Enroll Student">
+</form>

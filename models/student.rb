@@ -34,25 +34,6 @@ class Student
     SqlRunner.run(sql,values).map{|house|House.new(house)}
   end
 
-  # def update
-  #
-  #   sql = "UPDATE students
-  #   SET
-  #   (
-  #     first_name,
-  #     last_name,
-  #     house,
-  #     age
-  #   ) =
-  #   (
-  #     $1, $2, $3, $4
-  #   )
-  #   WHERE id = $5"
-  #   values = [@first_name, @last_name, @house, @age, @id]
-  #   SqlRunner.run(sql, values)
-  #
-  # end
-
   def self.find_by_id(id)
     sql = "SELECT * FROM students
             WHERE id = $1"
@@ -66,10 +47,11 @@ class Student
   end
 
   def self.all
-    sql = "SELECT students.*, houses.name FROM students
+    sql = "SELECT students.*, houses.name, houses.logo FROM students
             INNER JOIN houses ON students.house = houses.id
-            ORDER BY id"
+            ORDER BY houses.id"
     students = SqlRunner.run(sql)
     return students.map{|student| student}
   end
+
 end
