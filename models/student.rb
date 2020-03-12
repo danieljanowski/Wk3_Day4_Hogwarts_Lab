@@ -26,6 +26,25 @@ class Student
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
+  def update
+
+    sql = "UPDATE pizza_orders
+    SET
+    (
+      first_name,
+      last_name,
+      house,
+      age
+    ) =
+    (
+      $1, $2, $3, $4
+    )
+    WHERE id = $5"
+    values = [@first_name, @last_name, @house, @age, @id]
+    SqlRunner.run(sql, values)
+
+  end
+
   def self.find_by_id(id)
     sql = "SELECT * FROM students
           WHERE id = $1"
@@ -39,7 +58,7 @@ class Student
   end
 
   def self.all
-    sql = "SELECT * FROM students"
+    sql = "SELECT * FROM students ORDER BY house"
     students = SqlRunner.run(sql)
     return students.map{|student| Student.new(student)}
   end

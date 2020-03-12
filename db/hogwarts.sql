@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS houses;
 DROP TABLE IF EXISTS students;
 
 CREATE TABLE students (
