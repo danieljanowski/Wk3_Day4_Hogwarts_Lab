@@ -29,7 +29,7 @@ house4.save
 student1 = Student.new({
   'first_name' => 'Michael',
   'last_name' => 'Drennan',
-  'house' => 'Hufflepuff',
+  'house' => house2.id,
   'age' => 29
   })
 student1.save
@@ -37,7 +37,7 @@ student1.save
 student2 = Student.new({
   'first_name' => 'Rob',
   'last_name' => 'Mathews',
-  'house' => 'Slytherin',
+  'house' => house4.id,
   'age' => 36
   })
 student2.save
@@ -45,11 +45,12 @@ student2.save
 student3 = Student.new({
   'first_name' => 'Daniel',
   'last_name' => 'Janowski',
-  'house' => 'Gryffindor',
+  'house' => house1.id,
   'age' => 42
   })
+
 student3.save
 
 
 
-p(House.all)
+p student1.house

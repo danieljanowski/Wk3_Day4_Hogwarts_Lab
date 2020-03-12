@@ -12,10 +12,9 @@
   id="last-name-field"
   />
   <label for="house-field">House:</label><select name="house" id="house-selection">
-    <option value="Gryffindor">Gryffindor</option>
-    <option value="Slytherin">Slytherin</option>
-    <option value="Hufflepuff">Hufflepuff</option>
-    <option value="Ravenclaw">Ravenclaw</option>
+    <% @houses.each do |house| %>
+    <option value="<%= house.id %>"><%= house.name %></option>
+    <% end %>
   </select>
   <label for="age-field">Age:</label><input
   type="number"

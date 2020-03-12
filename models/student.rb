@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('house.rb')
 
 class Student
 
@@ -9,7 +10,7 @@ class Student
     @id = options['id'].to_i if options['id']
     @first_name = options['first_name']
     @last_name = options['last_name']
-    @house = options['house']
+    @house = options['house'].to_i
     @age = options['age'].to_i
   end
 
@@ -24,6 +25,13 @@ class Student
             RETURNING id"
     values = [@first_name, @last_name, @house, @age]
     @id = SqlRunner.run(sql, values).first['id'].to_i
+  end
+
+  def find_house
+    sql = "SELECT * FROM houses
+            WHERE id = $1"
+    values = [@house]
+    SqlRunner.run(sql,values).map{|house|House.new(house)}
   end
 
   # def update
@@ -47,7 +55,7 @@ class Student
 
   def self.find_by_id(id)
     sql = "SELECT * FROM students
-          WHERE id = $1"
+            WHERE id = $1"
     values = [id]
     Student.new(SqlRunner.run(sql, values).first)
   end
@@ -58,8 +66,10 @@ class Student
   end
 
   def self.all
-    sql = "SELECT * FROM students ORDER BY house"
+    sql = "SELECT students.*, houses.name FROM students
+            INNER JOIN houses ON students.house = houses.id
+            ORDER BY id"
     students = SqlRunner.run(sql)
-    return students.map{|student| Student.new(student)}
+    return students.map{|student| student}
   end
 end
