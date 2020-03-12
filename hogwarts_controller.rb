@@ -7,3 +7,14 @@ get("/") do
   @students = Student.all
   erb(:index)
 end
+
+get("/new") do
+  erb(:new)
+end
+
+post '/student' do # create
+  @student = Student.new( params )
+  @student.save()
+
+  erb( :create )
+end
