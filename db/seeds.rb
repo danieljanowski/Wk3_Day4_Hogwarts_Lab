@@ -21,10 +21,16 @@ house4 = House.new({
   'logo' => "https://vignette.wikia.nocookie.net/harrypotter/images/7/72/Ccd53034-c798-452a-8032-f28e06250d8f.jpg/revision/latest/scale-to-width-down/160?cb=20160729150848"
   })
 
+house5 = House.new({
+  'name' => "Nursery",
+  'logo' => "https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/102013/hogwarts_coat_of_arms_colored_with_shading.png?itok=u9D6Rfij"
+  })
+
 house1.save
 house2.save
 house3.save
 house4.save
+house5.save
 
 student1 = Student.new({
   'first_name' => 'Michael',
