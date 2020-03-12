@@ -22,7 +22,7 @@ house4 = House.new({
   })
 
 house5 = House.new({
-  'name' => "Nursery",
+  'name' => "Hogwarts",
   'logo' => "https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/102013/hogwarts_coat_of_arms_colored_with_shading.png?itok=u9D6Rfij"
   })
 
